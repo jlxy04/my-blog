@@ -12,7 +12,7 @@ type DbConfig struct {
 }
 
 //主库配置
-var masterDbConfig = DbConfig{
+var MasterDbConfig = DbConfig{
 	Host:     "127.0.0.1",
 	Port:     3306,
 	User:     "root",

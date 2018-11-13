@@ -1,8 +1,10 @@
 package controllers
 
 import (
+	"encoding/json"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
+	"log"
 	"my-blog/service"
 )
 
@@ -11,8 +13,13 @@ type MenuController struct {
 	Service service.MenuService
 }
 
-func (c *MenuController) GetAll() mvc.Result {
-	return nil
+func (c *MenuController) GetAll() string {
+	dataList := c.Service.GetAll()
+	b, err := json.Marshal(dataList)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return string(b)
 }
 
 //根据ID查询
