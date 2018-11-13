@@ -2,30 +2,29 @@ package main
 
 import (
 	"github.com/kataras/iris"
-	"github.com/kataras/iris/middleware/logger"
-	recover2 "github.com/kataras/iris/middleware/recover"
+	"github.com/kataras/iris/mvc"
+	"my-blog/service"
+	"my-blog/web/controllers"
 )
 
 func main() {
 	app := iris.New()
-
 	app.Logger().SetLevel("debug")
+	mvc.Configure(app.Party("/meun"), menu)
 
-	app.Use(recover2.New())
-	app.Use(logger.New())
+	app.Run(
+		//开启web服务
+		iris.Addr("localhost:8080"),
+		// 按下CTRL / CMD + C时跳过错误的服务器：
+		iris.WithoutServerError(iris.ErrServerClosed),
+		//实现更快的json序列化和更多优化：
+		iris.WithOptimizations,
+	)
+}
 
-	htmlEngine := iris.HTML("./templates", ".html")
-	app.RegisterView(htmlEngine)
-
-	app.Get("/", func(ctx iris.Context) {
-		ctx.WriteString("welcome")
-	})
-
-	app.Get("/hello", func(ctx iris.Context) {
-		ctx.ViewData("Title", "这是个标题")
-		ctx.ViewData("Content", "这是内容")
-		ctx.View("hello.html")
-	})
-
-	app.Run(iris.Addr(":8080"), iris.WithoutServerError(iris.ErrServerClosed))
+func menu(app *mvc.Application) {
+	//app.Router.Use(middleware.BasicAuth)
+	menuService := service.NewMenuService()
+	app.Register(menuService)
+	app.Handle(new(controllers.MenuController))
 }

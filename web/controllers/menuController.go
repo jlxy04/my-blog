@@ -13,16 +13,25 @@ type MenuController struct {
 	Service service.MenuService
 }
 
-func (c *MenuController) GetAll() string {
+func (c *MenuController) GetAll() {
 	dataList := c.Service.GetAll()
 	b, err := json.Marshal(dataList)
-	if err != nil {
+	if b != nil && err != nil {
 		log.Fatal(err)
 	}
-	return string(b)
+	c.ctx.JSON(Xx{})
+}
+
+type Xx struct {
+	id string
 }
 
 //根据ID查询
 func (c *MenuController) GetById(id string) mvc.Result {
+	return nil
+}
+
+//根据ID查询
+func (c *MenuController) PostCreate(id string) error {
 	return nil
 }
