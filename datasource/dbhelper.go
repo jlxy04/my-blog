@@ -32,7 +32,7 @@ func InstanceMaster() *xorm.Engine {
 	engine, err := xorm.NewEngine(config.DriverName, driveSource)
 	if err != nil {
 		log.Fatal("dbhelper.InstanceMaster err = ", err)
-		return nil
+		return mastEngine
 	} else {
 		mastEngine = engine
 		return mastEngine

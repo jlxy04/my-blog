@@ -1,29 +1,18 @@
 package controllers
 
 import (
-	"encoding/json"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
-	"log"
+	"my-blog/models"
 	"my-blog/service"
 )
 
 type MenuController struct {
-	ctx     iris.Context
 	Service service.MenuService
 }
 
-func (c *MenuController) GetAll() {
-	dataList := c.Service.GetAll()
-	b, err := json.Marshal(dataList)
-	if b != nil && err != nil {
-		log.Fatal(err)
-	}
-	c.ctx.JSON(Xx{})
-}
-
-type Xx struct {
-	id string
+func (c *MenuController) GetAll() []models.BlogMenu {
+	return c.Service.GetAll()
 }
 
 //根据ID查询
@@ -32,6 +21,8 @@ func (c *MenuController) GetById(id string) mvc.Result {
 }
 
 //根据ID查询
-func (c *MenuController) PostCreate(id string) error {
+func (c *MenuController) PostCreate(ctx iris.Context) error {
+	m := &models.BlogMenu{}
+	ctx.ReadJSON(m)
 	return nil
 }

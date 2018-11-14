@@ -10,11 +10,14 @@ import (
 func main() {
 	app := iris.New()
 	app.Logger().SetLevel("debug")
-	mvc.Configure(app.Party("/meun"), menu)
 
+	app.StaticWeb("/js", "./html/js")
+	app.StaticWeb("/css", "./html/css")
+	app.StaticWeb("/html", "./html")
+	mvc.Configure(app.Party("/meun"), menu)
 	app.Run(
 		//开启web服务
-		iris.Addr("localhost:8080"),
+		iris.Addr(":8080"),
 		// 按下CTRL / CMD + C时跳过错误的服务器：
 		iris.WithoutServerError(iris.ErrServerClosed),
 		//实现更快的json序列化和更多优化：
