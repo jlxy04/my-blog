@@ -9,6 +9,8 @@ type DbConfig struct {
 	User     string
 	Password string
 	DbName   string
+	ShowLog  bool
+	DebugLog bool
 }
 
 //主库配置
@@ -18,4 +20,6 @@ var MasterDbConfig = DbConfig{
 	User:     "root",
 	Password: "123456",
 	DbName:   "blog",
+	ShowLog:  true,
+	DebugLog: true,
 }

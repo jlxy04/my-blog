@@ -74,4 +74,15 @@ $(document).ready(function () {
             }
         }
     });
+
+    $.ajax({
+        type: "GET",
+        url: "/meun/all",
+        success: function (data) {
+            console.log(data)
+        },
+        error: function(err){
+            console.log(err)
+        }
+    });
 });

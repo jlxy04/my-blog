@@ -29,7 +29,7 @@ func (dao MenuDao) Get(id string) *models.BlogMenu {
 
 func (dao MenuDao) GetAll() []models.BlogMenu {
 	datalist := []models.BlogMenu{}
-	err := dao.engine.Desc("sort").Find(&datalist)
+	err := dao.engine.Desc("sort").Where("status = ?", "Y").Find(&datalist)
 	if err != nil {
 		log.Println(err)
 		return datalist

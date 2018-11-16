@@ -3,6 +3,7 @@ package datasource
 import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/go-xorm/core"
 	"github.com/go-xorm/xorm"
 	"log"
 	"my-blog/config"
@@ -32,11 +33,14 @@ func InstanceMaster() *xorm.Engine {
 	engine, err := xorm.NewEngine(config.DriverName, driveSource)
 	if err != nil {
 		log.Fatal("dbhelper.InstanceMaster err = ", err)
-		return mastEngine
 	} else {
 		mastEngine = engine
-		return mastEngine
+		mastEngine.ShowSQL(c.ShowLog)
+		if c.DebugLog {
+			mastEngine.Logger().SetLevel(core.LOG_DEBUG)
+		}
 	}
+	return mastEngine
 }
 
 func InstanceSlave() *xorm.Engine {
