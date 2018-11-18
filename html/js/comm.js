@@ -79,7 +79,82 @@ $(document).ready(function () {
         type: "GET",
         url: "/meun/all",
         success: function (data) {
-            console.log(data)
+            //console.log(data)
+        },
+        error: function(err){
+            console.log(err)
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "/my/all",
+        success: function (data) {
+            $('#myDesc').html("<b>" + data[0].Name + "</b>" + data[0].MyDesc)
+        },
+        error: function(err){
+            console.log(err)
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "/p/top",
+        success: function (data) {
+            var html = ""
+            $(data).each(function (i, n) {
+                html += '<li><a href="/p/all"><img src="' + n.url + '"></a></li>'
+            })
+            $('#mainPicture').html(html)
+        },
+        error: function(err){
+            console.log(err)
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "/c/main",
+        success: function (data) {
+            var html = ""
+            $(data).each(function (i, n) {
+                html += '<li><a href="/p/all">' + n.name + '(' + n.count + ')' + '</a></li>'
+            })
+            $('#mainCategory').html(html)
+        },
+        error: function(err){
+            console.log(err)
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "/a/main",
+        success: function (data) {
+            var html = ""
+            $(data).each(function (i, n) {
+                var inhtml = '<li><i><a href="/"><img src="images/1.jpg"></a></i>\n' +
+                    '                <h3><a href="/">' + n.title + '</a></h3>\n' +
+                    '            <p>' + n.introduction + '</p>\n' +
+                    '            </li>';
+                html += inhtml
+            });
+            $('#mainContent').html(html);
+        },
+        error: function(err){
+            console.log(err)
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "/a/readtop",
+        success: function (data) {
+            var html = ""
+            $(data).each(function (i, n) {
+                html += "<li><a href=\"/\">" + n.title +  "</a></li>"
+            });
+            $('#topRead').html(html)
         },
         error: function(err){
             console.log(err)

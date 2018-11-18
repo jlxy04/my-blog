@@ -1,12 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
 	"my-blog/service"
 	"my-blog/web/controllers"
 	"net/http"
 	"strings"
+	"time"
 )
 
 func main() {
@@ -48,7 +50,40 @@ func main() {
 	//app.StaticWeb("/js", "./html/js")
 	//app.StaticWeb("/css", "./html/css")
 	//app.StaticWeb("/html", "./html")
-	mvc.Configure(app.Party("/meun"), menu)
+	mvc.Configure(app.Party("/meun"), func(app *mvc.Application) {
+		menuService := service.NewMenuService()
+		app.Register(menuService)
+		app.Handle(new(controllers.MenuController))
+	})
+
+	mvc.Configure(app.Party("/my"), func(app *mvc.Application) {
+		//app.Router.Use(middleware.BasicAuth)
+		myDescService := service.NewMyDescService()
+		app.Register(myDescService)
+		app.Handle(new(controllers.MyDescController))
+	})
+
+	mvc.Configure(app.Party("/p"), func(app *mvc.Application) {
+		//app.Router.Use(middleware.BasicAuth)
+		pictureService := service.NewPictureService()
+		app.Register(pictureService)
+		app.Handle(new(controllers.PictureController))
+	})
+
+	mvc.Configure(app.Party("/c"), func(app *mvc.Application) {
+		//app.Router.Use(middleware.BasicAuth)
+		categoryService := service.NewCategoryService()
+		app.Register(categoryService)
+		app.Handle(new(controllers.CategoryController))
+	})
+
+	mvc.Configure(app.Party("/a"), func(app *mvc.Application) {
+		//app.Router.Use(middleware.BasicAuth)
+		articleService := service.NewArticleService()
+		app.Register(articleService)
+		app.Handle(new(controllers.ArticleController))
+	})
+
 	app.Run(
 		//开启web服务
 		iris.Addr(":8080"),
@@ -59,9 +94,9 @@ func main() {
 	)
 }
 
-func menu(app *mvc.Application) {
-	//app.Router.Use(middleware.BasicAuth)
-	menuService := service.NewMenuService()
-	app.Register(menuService)
-	app.Handle(new(controllers.MenuController))
+type JsonTime time.Time
+
+func (this JsonTime) MarshalJSON() ([]byte, error) {
+	var stamp = fmt.Sprintf("\"%s\"", time.Time(this).Format("2006-01-02 15:04:05"))
+	return []byte(stamp), nil
 }

@@ -1,0 +1,34 @@
+package service
+
+import (
+	"my-blog/dao"
+	"my-blog/datasource"
+	"my-blog/models"
+)
+
+type ArticleService interface {
+	ListMain(topNum int) []models.BlogArticle
+
+	ListTop(topNum int) []models.BlogArticle
+}
+
+func NewArticleService() ArticleService {
+	return &articleService{
+		dao:           dao.NewArticleDao(datasource.InstanceMaster()),
+		extendService: NewExtendService(),
+	}
+}
+
+type articleService struct {
+	dao           *dao.ArticleDao
+	extendService ExtendService
+}
+
+func (s articleService) ListMain(topNum int) []models.BlogArticle {
+	return s.dao.ListMain(topNum)
+}
+
+func (s articleService) ListTop(topNum int) []models.BlogArticle {
+	ids := s.extendService.GetReadTopIds(topNum)
+	return s.dao.GetByIds(ids)
+}

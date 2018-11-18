@@ -3,7 +3,6 @@ package controllers
 import (
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
-	"github.com/lunny/log"
 	"my-blog/models"
 	"my-blog/service"
 )
@@ -13,7 +12,6 @@ type MenuController struct {
 }
 
 func (c *MenuController) GetAll() []models.BlogMenu {
-	log.Info("xxxxxxx")
 	return c.Service.GetAll()
 }
 
