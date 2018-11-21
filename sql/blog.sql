@@ -63,6 +63,17 @@ CREATE TABLE `blog_my_desc` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `blog_leave_msg` (
+  `id` varchar(40) NOT NULL,
+  `name` varchar(50) NOT NULL COMMENT '姓名',
+  `mail` varchar(255) NOT NULL COMMENT '邮箱',
+  `content` varchar(255) NOT NULL COMMENT '留言内容',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `reply_content` varchar(255) DEFAULT NULL COMMENT '回复内容',
+  `reply_time` datetime DEFAULT NULL COMMENT '回复时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='留言';
+
 INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_time`) VALUES (UUID(), '网站首页', 'index.html', 1, 'Y', NOW());
 INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_time`) VALUES (UUID(), '我的相册', 'share.html', 2, 'Y', NOW());
 INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_time`) VALUES (UUID(), '我的日记', 'list.html', 3, 'Y', NOW());
@@ -71,26 +82,26 @@ INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_t
 INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_time`) VALUES (UUID(), '内容页', 'info.html', 6, 'Y', NOW());
 INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_time`) VALUES (UUID(), '内容页', 'infopic.html', 7, 'Y', NOW());
 
-INSERT INTO `blog`.`blog_desc` (`id`, `name`, `my_desc`) VALUES (UUID(), '楚林少', '一个80后草根程序员，熟悉java相关、go语言等');
+INSERT INTO `blog`.`blog_my_desc` (`id`, `name`, `my_desc`) VALUES (UUID(), '楚林少', '一个80后草根程序员，熟悉java相关、go语言等');
 
-INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/1.jpg', 1);
-INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/2.jpg', 2);
-INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/3.jpg', 3);
-INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/4.jpg', 4);
-INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/5.jpg', 5);
-INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/6.jpg', 6);
-INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/7.jpg', 7);
-INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/8.jpg', 8);
-INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/1.jpg', 9);
-INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/2.jpg', 10);
-INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/3.jpg', 11);
-INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/4.jpg', 12);
-INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/5.jpg', 13);
-INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/6.jpg', 14);
-INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/7.jpg', 15);
+INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/1.jpg!1', 1);
+INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/2.jpg!1', 2);
+INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/3.jpg!1', 3);
+INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/4.jpg!1', 4);
+INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/5.jpg!1', 5);
+INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/6.jpg!1', 6);
+INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/7.jpg!1', 7);
+INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/8.jpg!1', 8);
+INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/1.jpg!1', 9);
+INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/2.jpg!1', 10);
+INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/3.jpg!1', 11);
+INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/4.jpg!1', 12);
+INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/5.jpg!1', 13);
+INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/6.jpg!1', 14);
+INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/7.jpg!1', 15);
 
-INSERT INTO `blog`.`blog_category` (`id`, `name`, `sort`, `show_main`, `count`) VALUES (UUID(), 'java基础', 1, 'Y', 1);
-INSERT INTO `blog`.`blog_category` (`id`, `name`, `sort`, `show_main`, `count`) VALUES (UUID(), 'java-web', 2, 'Y', 1);
+INSERT INTO `blog`.`blog_category` (`id`, `name`, `sort`, `show_main`, `count`) VALUES ('123456', 'java基础', 1, 'Y', 1);
+INSERT INTO `blog`.`blog_category` (`id`, `name`, `sort`, `show_main`, `count`) VALUES ('1234567', 'java-web', 2, 'Y', 1);
 INSERT INTO `blog`.`blog_category` (`id`, `name`, `sort`, `show_main`, `count`) VALUES (UUID(), 'java并发', 3, 'Y', 2);
 INSERT INTO `blog`.`blog_category` (`id`, `name`, `sort`, `show_main`, `count`) VALUES (UUID(), '分页式', 4, 'Y', 1);
 INSERT INTO `blog`.`blog_category` (`id`, `name`, `sort`, `show_main`, `count`) VALUES (UUID(), 'mq', 5, 'Y', 1);
@@ -109,15 +120,16 @@ INSERT INTO `blog`.`blog_article` (
 )
 VALUES
 	(
-		UUID(),
+		'123456',
 		'大家好',
 		'李四',
 		null,
-		'9c7f13ab-eb30-11e8-90f0-00ff560f7041',
+		'123456',
 		'第一次见面',
 		'大家好呀',
 		'内容很少，给大家打个招呼',
 		NOW()
 	);
+INSERT INTO `blog`.`blog_extend` (`id`, `article_id`, `read_count`, `like_count`, `pre_article`, `nex_article`) VALUES ('123456', '123456', 10, 20, NULL, NULL);
 
 xorm reverse mysql root:123456@/blog?charset=utf8 templates/goxorm

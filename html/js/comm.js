@@ -146,6 +146,7 @@ $(document).ready(function () {
         }
     });
 
+    //站长推荐及最高阅读量
     $.ajax({
         type: "GET",
         url: "/a/readtop",
@@ -153,6 +154,21 @@ $(document).ready(function () {
             var html = ""
             $(data).each(function (i, n) {
                 html += "<li><a href=\"/\">" + n.title +  "</a></li>"
+            });
+            $('#topRead').html(html)
+        },
+        error: function(err){
+            console.log(err)
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "/l/top",
+        success: function (data) {
+            var html = ""
+            $(data).each(function (i, n) {
+                html += "<div class="fb"><ul><p class="fbtime"><span> 2018-07-21</span> 夜月归途</p><p class="fbinfo">从青姐朋友圈分享的文章《我为什么要做个人网站》过来的，自习看了下你的网站非常不错，看的出来你一直在坚持!</p></ul></div><div class="hf"><ul><p class="zzhf"><font color="#FF0000">站长回复:</font>感谢捧场啊！看了你的网站，有两个月没更新了哦~</p></ul></div>"
             });
             $('#topRead').html(html)
         },

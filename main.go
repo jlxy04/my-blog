@@ -84,6 +84,13 @@ func main() {
 		app.Handle(new(controllers.ArticleController))
 	})
 
+	mvc.Configure(app.Party("/l"), func(app *mvc.Application) {
+		//app.Router.Use(middleware.BasicAuth)
+		leaveMsgService := service.NewLeaveMsgService()
+		app.Register(leaveMsgService)
+		app.Handle(new(controllers.LeaveMsgController))
+	})
+
 	app.Run(
 		//开启web服务
 		iris.Addr(":8080"),
