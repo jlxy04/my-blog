@@ -20,3 +20,11 @@ func (dao LeaveMsgDao) GetTopLeaveMsg(topNum int) []models.BlogLeaveMsg {
 	dao.engine.Desc("create_time").Limit(topNum).Find(&list)
 	return list
 }
+
+func (dao LeaveMsgDao) Create(msg models.BlogLeaveMsg) error {
+	int64, err := dao.engine.InsertOne(msg)
+	if int64 < 0 || err != nil {
+		return err
+	}
+	return nil
+}

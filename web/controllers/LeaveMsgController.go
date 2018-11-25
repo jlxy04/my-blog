@@ -1,8 +1,11 @@
 package controllers
 
 import (
+	"github.com/kataras/iris"
+	"my-blog/extend"
 	"my-blog/models"
 	"my-blog/service"
+	"time"
 )
 
 type LeaveMsgController struct {
@@ -11,4 +14,18 @@ type LeaveMsgController struct {
 
 func (c LeaveMsgController) GetTop() []models.BlogLeaveMsg {
 	return c.Server.GetTopLeaveMsg(10)
+}
+
+func (c LeaveMsgController) PostAdd(ctx iris.Context) {
+	//lm := &models.BlogLeaveMsg{
+	//	Name:name,
+	//	Mail:email,
+	//	Content:content,
+	//	CreateTime:extend.Time(time.Now()),
+	//}
+	msg := models.BlogLeaveMsg{}
+	ctx.ReadForm(&msg)
+	msg.Id = extend.GenerateId()
+	msg.CreateTime = extend.Time(time.Now())
+	c.Server.Create(msg)
 }

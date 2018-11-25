@@ -8,6 +8,7 @@ import (
 
 type LeaveMsgService interface {
 	GetTopLeaveMsg(topNum int) []models.BlogLeaveMsg
+	Create(msg models.BlogLeaveMsg)
 }
 
 func NewLeaveMsgService() LeaveMsgService {
@@ -22,4 +23,8 @@ type leaveMsgService struct {
 
 func (s leaveMsgService) GetTopLeaveMsg(topNum int) []models.BlogLeaveMsg {
 	return s.dao.GetTopLeaveMsg(topNum)
+}
+
+func (s leaveMsgService) Create(msg models.BlogLeaveMsg) {
+	s.dao.Create(msg)
 }

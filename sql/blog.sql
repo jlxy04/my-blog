@@ -15,7 +15,7 @@ CREATE TABLE `blog_article` (
   `cover_img` varchar(255) DEFAULT NULL COMMENT '封面图片',
   `category_id` varchar(40) NOT NULL COMMENT '分类ID',
   `label` varchar(10) DEFAULT NULL COMMENT '标签',
-  `Introduction` varchar(100) DEFAULT NULL COMMENT '简介',
+  `Introduction` varchar(255) DEFAULT NULL COMMENT '简介',
   `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '内容',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
