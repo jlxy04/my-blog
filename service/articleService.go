@@ -10,6 +10,8 @@ type ArticleService interface {
 	ListMain(topNum int) []models.BlogArticle
 
 	ListTop(topNum int) []models.BlogArticle
+
+	GetById(id string) models.BlogArticle
 }
 
 func NewArticleService() ArticleService {
@@ -31,4 +33,9 @@ func (s articleService) ListMain(topNum int) []models.BlogArticle {
 func (s articleService) ListTop(topNum int) []models.BlogArticle {
 	ids := s.extendService.GetReadTopIds(topNum)
 	return s.dao.GetByIds(ids)
+}
+
+func (s articleService) GetById(id string) models.BlogArticle {
+	//阅读次数加1
+	return s.dao.GetById(id)
 }

@@ -119,7 +119,7 @@ $(document).ready(function () {
         success: function (data) {
             var html = ""
             $(data).each(function (i, n) {
-                html += '<li><a href="/p/all">' + n.name + '(' + n.count + ')' + '</a></li>'
+                html += '<li><a href="/c/detail">' + n.name + '(' + n.count + ')' + '</a></li>'
             })
             $('#mainCategory').html(html)
         },

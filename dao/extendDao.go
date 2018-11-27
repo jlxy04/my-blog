@@ -23,3 +23,9 @@ func (e ExtendDao) GetReadTopIds(topNum int) []string {
 	}
 	return list
 }
+
+func (dao ExtendDao) IncreaseReadCount(articleId string, readCount int) (bool, error) {
+	sql := "update blog_extend set read_count = read_count + ? where article_id = ?"
+	dao.engine.Exec(sql, readCount, articleId)
+	return true, nil
+}

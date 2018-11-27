@@ -16,3 +16,7 @@ func (c ArticleController) GetMain() []models.BlogArticle {
 func (c ArticleController) GetReadtop() []models.BlogArticle {
 	return c.Service.ListTop(8)
 }
+
+func (c ArticleController) GetDetailBy(id string) models.BlogArticle {
+	return c.Service.GetById(id)
+}

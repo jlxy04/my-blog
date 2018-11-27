@@ -7,6 +7,8 @@ import (
 
 type ExtendService interface {
 	GetReadTopIds(topNum int) []string
+
+	IncreaseReadCount(articleId string, readCount int) (bool, error)
 }
 
 func NewExtendService() ExtendService {
@@ -21,4 +23,8 @@ type extendService struct {
 
 func (s extendService) GetReadTopIds(topNum int) []string {
 	return s.dao.GetReadTopIds(topNum)
+}
+
+func (s extendService) IncreaseReadCount(articleId string, readCount int) (bool, error) {
+	return s.dao.IncreaseReadCount(articleId, readCount)
 }

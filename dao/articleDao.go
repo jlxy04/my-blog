@@ -16,29 +16,38 @@ func NewArticleDao(engine *xorm.Engine) *ArticleDao {
 	}
 }
 
-func (a ArticleDao) ListMain(topNum int) []models.BlogArticle {
+func (dao ArticleDao) ListMain(topNum int) []models.BlogArticle {
 	list := make([]models.BlogArticle, 0)
-	err := a.engine.Desc("create_time").Limit(topNum).Find(&list)
+	err := dao.engine.Desc("create_time").Limit(topNum).Find(&list)
 	if err != nil {
 		log.Println(err)
 	}
 	return list
 }
 
-func (a ArticleDao) ListTop(topNum int) []models.BlogArticle {
+func (dao ArticleDao) ListTop(topNum int) []models.BlogArticle {
 	list := make([]models.BlogArticle, 0)
-	err := a.engine.Desc("read").Limit(topNum).Find(&list)
+	err := dao.engine.Desc("read").Limit(topNum).Find(&list)
 	if err != nil {
 		log.Println(err)
 	}
 	return list
 }
 
-func (a ArticleDao) GetByIds(ids []string) []models.BlogArticle {
+func (dao ArticleDao) GetByIds(ids []string) []models.BlogArticle {
 	list := make([]models.BlogArticle, 0)
-	err := a.engine.In("id", ids).Find(&list)
+	err := dao.engine.In("id", ids).Find(&list)
 	if err != nil {
 		log.Println(err)
 	}
 	return list
+}
+
+func (dao ArticleDao) GetById(id string) models.BlogArticle {
+	article := models.BlogArticle{}
+	bool, err := dao.engine.ID(id).Get(&article)
+	if err != nil || !bool {
+		log.Println(err, bool)
+	}
+	return article
 }
