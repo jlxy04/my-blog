@@ -60,6 +60,8 @@ CREATE TABLE `blog_my_desc` (
   `id` varchar(40) NOT NULL,
   `name` varchar(10) NOT NULL COMMENT '姓名',
   `my_desc` varchar(255) NOT NULL COMMENT '自我描述',
+  `blog_desc` varchar(255) NOT NULL COMMENT '网站描述',
+  `icp` varchar(255) NOT NULL COMMENT '网站备案号',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -82,7 +84,7 @@ INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_t
 INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_time`) VALUES (UUID(), '内容页', 'info.html', 6, 'Y', NOW());
 INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_time`) VALUES (UUID(), '内容页', 'infopic.html', 7, 'Y', NOW());
 
-INSERT INTO `blog`.`blog_my_desc` (`id`, `name`, `my_desc`) VALUES (UUID(), '楚林少', '一个80后草根程序员，熟悉java相关、go语言等');
+INSERT INTO `blog`.`blog_my_desc` (`id`, `name`, `my_desc`, `blog_desc`, `icp`) VALUES (''a854d281-ed66-11e8-b460-00163e086cfc'', ''楚林少'', ''一个80后草根程序员，熟悉java相关、go语言等'', ''楚林少的博客'', ''湘ICP备18001708号-1'');
 
 INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/1.jpg!1', 1);
 INSERT INTO `blog`.`blog_picture` (`id`, `url`, `hot`) VALUES (UUID(), 'https://img.126134.com/blog/img/2.jpg!1', 2);
