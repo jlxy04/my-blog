@@ -60,8 +60,8 @@ CREATE TABLE `blog_my_desc` (
   `id` varchar(40) NOT NULL,
   `name` varchar(10) NOT NULL COMMENT '姓名',
   `my_desc` varchar(255) NOT NULL COMMENT '自我描述',
-  `blog_desc` varchar(255) NOT NULL COMMENT '网站描述',
-  `icp` varchar(255) NOT NULL COMMENT '网站备案号',
+  `blog_desc` varchar(100) NOT NULL COMMENT '网站描述',
+  `icp` varchar(50) NOT NULL COMMENT '网站备案号',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

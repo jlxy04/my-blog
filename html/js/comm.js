@@ -90,7 +90,8 @@ $(document).ready(function () {
         type: "GET",
         url: "/my/all",
         success: function (data) {
-            $('#myDesc').html("<b>" + data[0].name + "</b>" + data[0].MyDesc)
+            $('#myDesc').html("<b>" + data[0].name + "</b>" + data[0].myDesc);
+            $('#icpDiv').html(data[0].icp);
         },
         error: function(err){
             console.log(err)
