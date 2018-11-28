@@ -35,6 +35,7 @@ func (s articleService) ListTop(topNum int) []models.BlogArticle {
 	return s.dao.GetByIds(ids)
 }
 
+//通过ID查询文章内容、阅读次数加1
 func (s articleService) GetById(id string) models.BlogArticle {
 	//阅读次数加1
 	s.extendService.IncreaseReadCount(id, 1)
