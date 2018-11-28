@@ -37,5 +37,6 @@ func (s articleService) ListTop(topNum int) []models.BlogArticle {
 
 func (s articleService) GetById(id string) models.BlogArticle {
 	//阅读次数加1
+	s.extendService.IncreaseReadCount(id, 1)
 	return s.dao.GetById(id)
 }

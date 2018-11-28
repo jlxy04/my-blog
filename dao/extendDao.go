@@ -29,3 +29,9 @@ func (dao ExtendDao) IncreaseReadCount(articleId string, readCount int) (bool, e
 	_, err := dao.engine.Exec(sql, readCount, articleId)
 	return true, err
 }
+
+func (dao ExtendDao) IncreaseLikeCount(articleId string, readCount int) (bool, error) {
+	sql := "update blog_extend set like_count = like_count + ? where article_id = ?"
+	_, err := dao.engine.Exec(sql, readCount, articleId)
+	return true, err
+}
