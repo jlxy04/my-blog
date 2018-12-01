@@ -12,11 +12,11 @@ CREATE TABLE `blog_article` (
   `id` varchar(40) NOT NULL,
   `title` varchar(40) NOT NULL COMMENT '标题',
   `author` varchar(50) NOT NULL COMMENT '作者',
-  `cover_img` varchar(255) DEFAULT NULL COMMENT '封面图片',
+  `cover_img_url` varchar(255) DEFAULT NULL COMMENT '封面图片',
   `category_id` varchar(40) NOT NULL COMMENT '分类ID',
-  `label` varchar(10) DEFAULT NULL COMMENT '标签',
-  `Introduction` varchar(255) DEFAULT NULL COMMENT '简介',
-  `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '内容',
+  `label` varchar(50) DEFAULT NULL COMMENT '标签',
+  `Introduction` varchar(256) DEFAULT NULL COMMENT '简介',
+  `content` text NOT NULL COMMENT '内容',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章';
@@ -81,7 +81,7 @@ INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_t
 INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_time`) VALUES (UUID(), '我的日记', 'list.html', 3, 'Y', NOW());
 INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_time`) VALUES (UUID(), '关于我', 'about.html', 4, 'Y', NOW());
 INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_time`) VALUES (UUID(), '留言', 'gbook.html', 5, 'Y', NOW());
-INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_time`) VALUES (UUID(), '内容页', 'info.html', 6, 'Y', NOW());
+INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_time`) VALUES (UUID(), '内容页', 'detail.html', 6, 'Y', NOW());
 INSERT INTO `blog`.`blog_menu` (`id`, `name`, `url`, `sort`, `status`, `create_time`) VALUES (UUID(), '内容页', 'infopic.html', 7, 'Y', NOW());
 
 INSERT INTO `blog`.`blog_my_desc` (`id`, `name`, `my_desc`, `blog_desc`, `icp`) VALUES (''a854d281-ed66-11e8-b460-00163e086cfc'', ''楚林少'', ''一个80后草根程序员，熟悉java相关、go语言等'', ''楚林少的博客'', ''湘ICP备18001708号-1'');

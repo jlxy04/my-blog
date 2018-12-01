@@ -134,8 +134,8 @@ $(document).ready(function () {
         success: function (data) {
             var html = ""
             $(data).each(function (i, n) {
-                var inhtml = '<li><i><a href="/"><img src="images/1.jpg"></a></i>\n' +
-                    '                <h3><a href="/">' + n.title + '</a></h3>\n' +
+                var inhtml = '<li><i><a href="/"><img src="'+ n.coverImgUrl + '"></a></i>\n' +
+                    '                <h3><a href="javascript:showArticleDetail(\''+ n.id + '\')">' + n.title + '</a></h3>\n' +
                     '            <p>' + n.introduction + '</p>\n' +
                     '            </li>';
                 html += inhtml
@@ -163,3 +163,7 @@ $(document).ready(function () {
         }
     });
 });
+
+function showArticleDetail(id) {
+    window.open('detail.html?id=' + id);
+}

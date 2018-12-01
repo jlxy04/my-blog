@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
+	"github.com/kataras/iris/sessions"
 	"my-blog/service"
 	"my-blog/web/controllers"
 	"net/http"
@@ -89,6 +90,29 @@ func main() {
 		leaveMsgService := service.NewLeaveMsgService()
 		app.Register(leaveMsgService)
 		app.Handle(new(controllers.LeaveMsgController))
+	})
+
+	mvc.Configure(app.Party("/e"), func(app *mvc.Application) {
+		//app.Router.Use(middleware.BasicAuth)
+		extendService := service.NewExtendService()
+		app.Register(extendService)
+		app.Handle(new(controllers.ExtendController))
+	})
+
+	mvc.Configure(app.Party("/co"), func(app *mvc.Application) {
+		//app.Router.Use(middleware.BasicAuth)
+		commonService := service.NewCommonService()
+		app.Register(commonService)
+		app.Handle(new(controllers.CommonController))
+	})
+
+	mvc.Configure(app.Party("/ca"), func(app *mvc.Application) {
+		//app.Router.Use(middleware.BasicAuth)
+		captchaService := service.NewCaptchaService()
+		app.Register(captchaService)
+		sess := sessions.New(sessions.Config{Cookie: "mysession_cookie_name"})
+		app.Register(sess.Start, time.Now())
+		app.Handle(new(controllers.CaptchaController))
 	})
 
 	app.Run(

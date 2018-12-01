@@ -1,13 +1,11 @@
 package models
 
-import (
-	"time"
-)
+import "my-blog/extend"
 
 type BlogComment struct {
-	Id          string    `xorm:"not null pk VARCHAR(40)"`
-	ArticleId   string    `xorm:"not null comment('文章ID') VARCHAR(40)"`
-	Commentator string    `xorm:"not null comment('评价人') VARCHAR(40)"`
-	Content     string    `xorm:"not null VARCHAR(255)"`
-	CreateTime  time.Time `xorm:"not null default 'CURRENT_TIMESTAMP' DATETIME"`
+	Id          string      `xorm:"not null pk VARCHAR(40)" json:"-"`
+	ArticleId   string      `xorm:"not null comment('文章ID') VARCHAR(40)" json:"-"`
+	Commentator string      `xorm:"not null comment('评价人') VARCHAR(40)" json:"commentator"`
+	Content     string      `xorm:"not null VARCHAR(255)" json:"content"`
+	CreateTime  extend.Time `xorm:"not null default 'CURRENT_TIMESTAMP' DATETIME" json:"createTime"`
 }

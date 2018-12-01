@@ -3,6 +3,7 @@ package dao
 import (
 	"github.com/go-xorm/xorm"
 	"log"
+	"my-blog/models"
 )
 
 type ExtendDao struct {
@@ -34,4 +35,16 @@ func (dao ExtendDao) IncreaseLikeCount(articleId string, readCount int) (bool, e
 	sql := "update blog_extend set like_count = like_count + ? where article_id = ?"
 	_, err := dao.engine.Exec(sql, readCount, articleId)
 	return true, err
+}
+
+func (dao ExtendDao) GetByArticleId(articleId string) models.BlogExtend {
+	list := make([]models.BlogExtend, 0)
+	//sql := "select a.*, b.title as pre_article_name, c.title as next_article_name from blog_extend a left join blog_article b on a.pre_article = b.id left join blog_article c on a.nex_article = c.id where a.article_id = ?"
+	dao.engine.Alias("a").Join("left", "blog_article b", "a.pre_article = b.id").
+		Join("left", "blog_article c", "a.nex_article = c.id").
+		Where("a.article_id = ?", articleId).Select("a.*, b.title as pre_article_name, c.title as next_article_name").Find(&list)
+	if len(list) > 0 {
+		return list[0]
+	}
+	return models.BlogExtend{}
 }

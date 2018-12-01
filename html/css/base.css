@@ -17,7 +17,7 @@ main { overflow: hidden; width: 68%; float: right; display: block; }
 nav { width: 1000px; margin: auto }
 .logo { float: left; font-size: 22px }
 #mnavh { display: none; width: 30px; height: 40px; float: right; text-align: center; padding: 0 5px }
-#starlist { float: right; }
+#starlist { float: left; padding-left: 100px;}
 #starlist li { float: left; display: block; padding: 0 0 0 40px; font-size: 16px }
 .navicon { display: block; position: relative; width: 30px; height: 5px; background-color: #000; margin-top: 20px }
 .navicon:before, .navicon:after { content: ''; display: block; width: 30px; height: 5px; position: absolute; background: #000; -webkit-transition-property: margin, -webkit-transform; transition-property: margin, -webkit-transform; transition-property: margin, transform; transition-property: margin, transform, -webkit-transform; -webkit-transition-duration: 300ms; transition-duration: 300ms; }

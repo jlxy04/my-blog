@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>个人博客</title>
+<meta name="keywords" content="个人博客" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/base.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
+<link href="css/info.css" rel="stylesheet">
+<link href="css/m.css" rel="stylesheet">
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/comm.js"></script>
+<script type="text/javascript" src="js/detail.js"></script>
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+</head>
+<body>
+<header class="header-navigation" id="header">
+  <nav>
+    <div class="logo"><a href="/">楚林少个人博客</a></div>
+    <h2 id="mnavh"><span class="navicon"></span></h2>
+    <ul id="starlist">
+      <li><a href="index.html">网站首页</a></li>
+      <li><a href="share.html">我的相册</a></li>
+      <li><a href="list.html">我的文章</a></li>
+      <li><a href="about.html">关于我</a></li>
+      <li><a href="gbook.html">留言</a></li>
+      <li><a href="" id="detailUrl">文章详情</a></li>
+    </ul>
+  </nav>
+</header>
+<article>
+  <aside class="l_box">
+    <div class="search">
+      <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
+        <input name="show" value="title" type="hidden">
+        <input name="tempid" value="1" type="hidden">
+        <input name="tbname" value="news" type="hidden">
+        <input name="Submit" class="input_submit" value="搜索" type="submit">
+      </form>
+    </div>
+    <div class="fenlei">
+      <h2>文章分类</h2>
+      <ul id="mainCategory">
+        <li><a href="/">学无止境（33）</a></li>
+        <li><a href="/">日记（19）</a></li>
+        <li><a href="/">慢生活（520）</a></li>
+        <li><a href="/">美文欣赏（40）</a></li>
+      </ul>
+    </div>
+    <div class="tuijian">
+      <h2>点击排行</h2>
+      <ul id="topRead">
+
+      </ul>
+    </div>
+    <div class="cloud">
+      <h2>标签云</h2>
+      <ul>
+        <a href="/">陌上花开</a> <a href="/">校园生活</a> <a href="/">html5</a> <a href="/">SumSung</a> <a href="/">青春</a> <a href="/">温暖</a> <a href="/">阳光</a> <a href="/">三星</a><a href="/">索尼</a> <a href="/">华维荣耀</a> <a href="/">三星</a> <a href="/">索尼</a>
+      </ul>
+    </div>
+    <!--<div class="guanzhu">
+      <h2>关注我 么么哒</h2>
+      <ul>
+        <img src="images/wx.jpg">
+      </ul>
+    </div> -->
+  </aside>
+  <main>
+    <div class="infosbox">
+      <div class="newsview">
+        <h3 class="news_title" id="aTitle"></h3>
+        <div class="bloginfo">
+          <ul>
+            <li class="author">作者：<a href="/" id="aAuthor"></a></li>
+            <li class="lmname"><a href="/">学无止境</a></li>
+            <li class="timer" id="aCreateTime"></li>
+            <li class="view" id="aReadCount">4567人已阅读</li>
+          </ul>
+        </div>
+        <div class="tags" id="aLabel"></div>
+        <div class="news_about" id="aIntroduction"><strong>简介</strong></div>
+        <div class="news_con" id="aContent">
+
+        </div>
+      </div>
+      <div class="share">
+        <p class="diggit" id="aLike"></p>
+      </div>
+      <div class="nextinfo">
+        <p id="aPreA">上一篇：</p>
+        <p id="aNextA">下一篇：</p>
+      </div>
+      <div class="news_pl">
+        <h2>文章评论</h2>
+        <div class="gbko" id="commonDiv">
+          <form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
+            <div id="plpost">
+              <p class="saying">来说两句吧...</p>
+              <p class="yname"><span>用户名:</span>
+                <input name="username" type="text" class="inputText" id="username" value="" size="16">
+              </p>
+              <p class="yzm"><span>验证码:</span>
+                <input name="key" type="text" class="inputText" size="16"> <img src="" id="captchaCode" style="height: 25px;width: 100px;display: inline; vertical-align: middle;">
+              </p>
+              <input name="nomember" type="hidden" id="nomember" value="1" checked="checked">
+              <textarea name="saytext" rows="6" id="saytext"></textarea>
+              <input name="imageField" type="submit" value="提交">
+              <input name="id" type="hidden" id="id" value="106">
+              <input name="classid" type="hidden" id="classid" value="77">
+              <input name="enews" type="hidden" id="enews" value="AddPl">
+              <input name="repid" type="hidden" id="repid" value="0">
+              <input type="hidden" name="ecmsfrom" value="/joke/talk/2018-07-23/106.html">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+</article>
+<footer>
+  <p><a href="/" id="icpDiv"></a></p>
+</footer>
+<a href="#" class="cd-top">Top</a>
+</body>
+</html>

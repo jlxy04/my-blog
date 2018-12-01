@@ -3,6 +3,7 @@ package service
 import (
 	"my-blog/dao"
 	"my-blog/datasource"
+	"my-blog/models"
 )
 
 type ExtendService interface {
@@ -11,6 +12,8 @@ type ExtendService interface {
 	IncreaseReadCount(articleId string, readCount int) (bool, error)
 
 	IncreaseLikeCount(articleId string, readCount int) (bool, error)
+
+	GetByArticleId(articleId string) models.BlogExtend
 }
 
 func NewExtendService() ExtendService {
@@ -35,4 +38,9 @@ func (s extendService) IncreaseReadCount(articleId string, readCount int) (bool,
 // 增加喜欢次数
 func (s extendService) IncreaseLikeCount(articleId string, readCount int) (bool, error) {
 	return s.dao.IncreaseLikeCount(articleId, readCount)
+}
+
+//根据文章ID查询扩展详情
+func (s extendService) GetByArticleId(articleId string) models.BlogExtend {
+	return s.dao.GetByArticleId(articleId)
 }
