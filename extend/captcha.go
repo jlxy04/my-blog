@@ -2,7 +2,6 @@ package extend
 
 import (
 	"github.com/mojocn/base64Captcha"
-	"log"
 )
 
 //生成验证码，返回验证码和base64字符串
@@ -31,11 +30,11 @@ func GenerateCaptcha() (string, string) {
 	return idKey, base64stringD
 }
 
-func VerfiyCaptcha(idkey, verifyValue string) {
+func VerfiyCaptcha(idkey, verifyValue string) bool {
 	verifyResult := base64Captcha.VerifyCaptcha(idkey, verifyValue)
 	if verifyResult {
-		log.Println("success")
+		return true
 	} else {
-		log.Println("fail")
+		return false
 	}
 }

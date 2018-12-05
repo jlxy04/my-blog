@@ -11,6 +11,7 @@ $(document).ready(function () {
             $('#aLabel').html(getLabel(data));
             $('#aIntroduction').append(data.introduction);
             $('#aContent').html(data.content);
+            $('#articleId').val(data.id)
         },
         error: function(err){
             console.log(err)
@@ -126,4 +127,48 @@ function AddLike(aid) {
             console.log(err)
         }
     });
+}
+
+function AddComment() {
+    let name = $('#username').val();
+    if (!name) {
+        $('#nameTips').text('姓名不能为空');
+    } else {
+        $('#nameTips').text('');
+    }
+
+    let captcha = $('#captcha').val();
+    if(!captcha) {
+        $('#captchaTips').text('验证码不能为空')
+    } else {
+        $('#captchaTips').text('')
+    }
+
+    let content = $('#content').val();
+    if(!content) {
+        $('#contentTips').text('内容不能为空')
+    } else {
+        $('#contentTips').text('')
+    }
+    $.ajax({
+        type: "POST",
+        url: "/co/add/common",
+        data: "name=" +  name + "&captcha=" + captcha + "&content=" + content + '&articleId=' + $('#articleId').val(),
+        success: function (data) {
+            console.log(data)
+            if(data.commentator) {
+                $('#username').val('');
+                $('#content').val('');
+                $('#captcha').val('');
+                $('#captchaTips').text('');
+                $('#captchaCode').click();
+            } else {
+                $('#captchaTips').text('验证码错误')
+            }
+        },
+        error: function(err){
+            console.log(err)
+        }
+    });
+    return false;
 }

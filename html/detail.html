@@ -98,23 +98,24 @@
       <div class="news_pl">
         <h2>文章评论</h2>
         <div class="gbko" id="commonDiv">
-          <form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
+          <form method="post" name="saypl" id="saypl" onsubmit="return false;">
+            <input type="hidden" id="articleId">
             <div id="plpost">
               <p class="saying">来说两句吧...</p>
-              <p class="yname"><span>用户名:</span>
-                <input name="username" type="text" class="inputText" id="username" value="" size="16">
+              <p class="yname"><span>用户名:&nbsp;&nbsp;&nbsp;</span>
+                <input name="username" type="text" class="inputText" id="username" value="" size="16" maxlength="10">
+                  <span><font color="red" id="nameTips"></font></span>
               </p>
-              <p class="yzm"><span>验证码:</span>
-                <input name="key" type="text" class="inputText" size="16"> <img src="" id="captchaCode" style="height: 25px;width: 100px;display: inline; vertical-align: middle;">
+              <p class="yzm"><span>验证码:&nbsp;&nbsp;&nbsp;</span>
+                <input name="key" type="text" class="inputText" size="16" id="captcha" maxlength="4"> <img src="" id="captchaCode" style="height: 25px;width: 100px;display: inline; vertical-align: middle;">
+                  <span><font color="red" id="captchaTips"></font></span>
               </p>
-              <input name="nomember" type="hidden" id="nomember" value="1" checked="checked">
-              <textarea name="saytext" rows="6" id="saytext"></textarea>
-              <input name="imageField" type="submit" value="提交">
-              <input name="id" type="hidden" id="id" value="106">
-              <input name="classid" type="hidden" id="classid" value="77">
-              <input name="enews" type="hidden" id="enews" value="AddPl">
-              <input name="repid" type="hidden" id="repid" value="0">
-              <input type="hidden" name="ecmsfrom" value="/joke/talk/2018-07-23/106.html">
+              <p class="yzm">
+                <span>评论内容:</span>
+                <textarea name="saytext" rows="6" id="content" style="vertical-align:top" maxlength="100"></textarea>
+                <span style=""><font color="red" id="contentTips"></font></span>
+              </p>
+              <input name="imageField" type="submit" value="提交" onclick="AddComment()">
             </div>
           </form>
         </div>

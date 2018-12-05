@@ -20,3 +20,7 @@ func (dao CommonDao) ListCommonByArticleId(articleId string, topNum int) []model
 	dao.engine.Where("article_id = ?", articleId).Desc("create_time").Limit(10).Find(&list)
 	return list
 }
+
+func (dao CommonDao) Create(comment models.BlogComment) {
+	dao.engine.Insert(comment)
+}

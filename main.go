@@ -26,6 +26,11 @@ func main() {
 
 	fileServer := app.StaticHandler("./html", false, false)
 
+	// 全局session，默认30分钟
+	session := sessions.New(sessions.Config{
+		Expires: 30 * time.Minute,
+	})
+
 	app.WrapRouter(func(w http.ResponseWriter, r *http.Request, router http.HandlerFunc) {
 		path := r.URL.Path
 		if !strings.Contains(path, ".") {
@@ -37,20 +42,6 @@ func main() {
 		app.ContextPool.Release(ctx)
 	})
 
-	// 跨域
-	//app.WrapRouter(func(w http.ResponseWriter, r *http.Request, firstNextIsTheRouter http.HandlerFunc) {
-	//	w.Header().Add("Access-Control-Allow-Origin", "*")
-	//	w.Header().Add("Access-Control-Allow-Credentials", "true")
-	//	w.Header().Add("Access-Control-Allow-Methods", "GET,POST")
-	//	w.Header().Add("Access-Control-Allow-Headers", "Set-Cookie,X-Requested-With,Content-Type")
-	//})
-	//app.Get("/", func(ctx iris.Context) {
-	//	ctx.WriteString("欢迎....")
-	//})
-
-	//app.StaticWeb("/js", "./html/js")
-	//app.StaticWeb("/css", "./html/css")
-	//app.StaticWeb("/html", "./html")
 	mvc.Configure(app.Party("/meun"), func(app *mvc.Application) {
 		menuService := service.NewMenuService()
 		app.Register(menuService)
@@ -103,6 +94,7 @@ func main() {
 		//app.Router.Use(middleware.BasicAuth)
 		commonService := service.NewCommonService()
 		app.Register(commonService)
+		app.Register(session.Start, time.Now())
 		app.Handle(new(controllers.CommonController))
 	})
 
@@ -110,8 +102,7 @@ func main() {
 		//app.Router.Use(middleware.BasicAuth)
 		captchaService := service.NewCaptchaService()
 		app.Register(captchaService)
-		sess := sessions.New(sessions.Config{Cookie: "mysession_cookie_name"})
-		app.Register(sess.Start, time.Now())
+		app.Register(session.Start, time.Now())
 		app.Handle(new(controllers.CaptchaController))
 	})
 
