@@ -20,3 +20,7 @@ func (c ArticleController) GetReadtop() []models.BlogArticle {
 func (c ArticleController) PostDetailBy(id string) models.BlogArticle {
 	return c.Service.GetById(id)
 }
+
+func (c ArticleController) GetListByCid(categoryId string) []models.BlogArticle {
+	return c.Service.ListByCategory(categoryId)
+}

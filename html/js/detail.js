@@ -162,6 +162,7 @@ function AddComment() {
                 $('#captcha').val('');
                 $('#captchaTips').text('');
                 $('#captchaCode').click();
+                $.DialogByZ.Autofade({Content: "评论成功", Top : "20%"})
             } else {
                 $('#captchaTips').text('验证码错误')
             }

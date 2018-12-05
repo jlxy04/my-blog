@@ -51,3 +51,9 @@ func (dao ArticleDao) GetById(id string) models.BlogArticle {
 	}
 	return article
 }
+
+func (dao ArticleDao) ListByCategoryId(categoryId string) []models.BlogArticle {
+	list := make([]models.BlogArticle, 0)
+	dao.engine.Where("category_id = ?", categoryId).Desc("create_time").Limit(10).Find(&list)
+	return list
+}

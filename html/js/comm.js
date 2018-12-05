@@ -119,7 +119,7 @@ $(document).ready(function () {
         success: function (data) {
             var html = ""
             $(data).each(function (i, n) {
-                html += '<li><a href="/c/detail">' + n.name + '(' + n.count + ')' + '</a></li>'
+                html += '<li><a href="javascript:showArticleDetailByCategory(\'' + n.id +  '\')">' + n.name + '(' + n.count + ')' + '</a></li>'
             })
             $('#mainCategory').html(html)
         },
@@ -154,7 +154,7 @@ $(document).ready(function () {
         success: function (data) {
             var html = ""
             $(data).each(function (i, n) {
-                html += "<li><a href=\"/\">" + n.title +  "</a></li>"
+                html += "<li><a href=\"javascript:showArticleDetail('"+ n.id + "\')\">" + n.title +  "</a></li>"
             });
             $('#topRead').html(html)
         },
@@ -166,4 +166,26 @@ $(document).ready(function () {
 
 function showArticleDetail(id) {
     window.open('detail.html?id=' + id);
+}
+
+function showArticleDetailByCategory(id) {
+    if(!$('#mainContent')[0]) {
+        window.location.href = "/index.html";
+        return ;
+    }
+    $.ajax({
+        type: "GET",
+        url: "/a/list/" + id + "/cid",
+        success: function (data) {
+            var html = ""
+            $(data).each(function (i, n) {
+                var inhtml = '<li><i><a href="/"><img src="'+ n.coverImgUrl + '"></a></i>\n' +
+                    '                <h3><a href="javascript:showArticleDetail(\''+ n.id + '\')">' + n.title + '</a></h3>\n' +
+                    '            <p>' + n.introduction + '</p>\n' +
+                    '            </li>';
+                html += inhtml
+            });
+            $('#mainContent').html(html);
+        }
+    })
 }
