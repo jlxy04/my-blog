@@ -2,8 +2,8 @@ package dao
 
 import (
 	"github.com/go-xorm/xorm"
+	"github.com/my-blog/models"
 	"log"
-	"my-blog/models"
 )
 
 type MyDescDao struct {

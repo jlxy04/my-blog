@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"github.com/kataras/iris"
-	"my-blog/extend"
-	"my-blog/models"
-	"my-blog/service"
+	"github.com/my-blog/extend"
+	"github.com/my-blog/models"
+	"github.com/my-blog/service"
 	"time"
 )
 

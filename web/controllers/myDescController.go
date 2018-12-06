@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"my-blog/models"
-	"my-blog/service"
+	"github.com/my-blog/models"
+	"github.com/my-blog/service"
 )
 
 type MyDescController struct {

@@ -1,7 +1,7 @@
 package models
 
 import (
-	"my-blog/extend"
+	"github.com/my-blog/extend"
 )
 
 type BlogLeaveMsg struct {

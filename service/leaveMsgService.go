@@ -1,9 +1,9 @@
 package service
 
 import (
-	"my-blog/dao"
-	"my-blog/datasource"
-	"my-blog/models"
+	"github.com/my-blog/dao"
+	"github.com/my-blog/datasource"
+	"github.com/my-blog/models"
 )
 
 type LeaveMsgService interface {

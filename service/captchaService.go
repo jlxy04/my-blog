@@ -1,6 +1,6 @@
 package service
 
-import "my-blog/extend"
+import "github.com/my-blog/extend"
 
 type CaptchaService interface {
 	GeneratorCaptchaCode() (string, string)

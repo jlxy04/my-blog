@@ -1,6 +1,6 @@
 package models
 
-import "my-blog/extend"
+import "github.com/my-blog/extend"
 
 type BlogComment struct {
 	Id          string      `xorm:"not null pk VARCHAR(40)" json:"-"`

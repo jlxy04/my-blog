@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/kataras/iris/sessions"
-	"my-blog/service"
+	"github.com/my-blog/service"
 )
 
 type CaptchaController struct {

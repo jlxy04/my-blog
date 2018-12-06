@@ -3,9 +3,9 @@ package controllers
 import (
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/sessions"
-	"my-blog/extend"
-	"my-blog/models"
-	"my-blog/service"
+	"github.com/my-blog/extend"
+	"github.com/my-blog/models"
+	"github.com/my-blog/service"
 )
 
 type CommonController struct {

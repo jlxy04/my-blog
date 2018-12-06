@@ -2,7 +2,7 @@ package dao
 
 import (
 	"github.com/go-xorm/xorm"
-	"my-blog/models"
+	"github.com/my-blog/models"
 )
 
 type CommonDao struct {
