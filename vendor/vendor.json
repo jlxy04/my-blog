@@ -80,25 +80,25 @@
 			"revisionTime": "2018-11-10T22:53:28Z"
 		},
 		{
-			"checksumSHA1": "k9izYoyobR8Upb3Yjsw9htgE/Mk=",
+			"checksumSHA1": "8M/GlM986QSn9urcuFsQMvUFgSI=",
 			"path": "github.com/go-sql-driver/mysql",
-			"revision": "99ff426eb706cffe92ff3d058e168b278cabf7c7",
-			"revisionTime": "2018-07-19T07:19:42Z"
+			"revision": "fd197cdcfae0c686792ef5399f223f5b66a30b6b",
+			"revisionTime": "2018-10-31T14:07:16Z"
 		},
 		{
-			"checksumSHA1": "igtr01xT/xDT02SVc/VYqwNuX6o=",
+			"checksumSHA1": "6atR+t4aMVKculfOXtFQNq3l8BQ=",
 			"path": "github.com/go-xorm/builder",
 			"revision": "03eb88feccce3e477c318ce7f6f1b386544ab20b",
 			"revisionTime": "2018-10-26T05:37:58Z"
 		},
 		{
-			"checksumSHA1": "B2Tn8TaQsR+6MzUQlxEjxAAFeX4=",
+			"checksumSHA1": "COnttajcyxQ700jx0i2FmcE1lD4=",
 			"path": "github.com/go-xorm/core",
 			"revision": "6bc9412b1c4d00c0a5cc9dd939a245a82cc50227",
 			"revisionTime": "2018-10-08T13:23:26Z"
 		},
 		{
-			"checksumSHA1": "d7mp2Ge2K08HIXU5g26OHHEQsYY=",
+			"checksumSHA1": "KcoVMxN+l1ABVEEdHjmXxxz65tY=",
 			"path": "github.com/go-xorm/xorm",
 			"revision": "b07c4067034594d1a43e314b10153ff9cfc58f86",
 			"revisionTime": "2018-11-02T16:17:11Z"
@@ -331,13 +331,13 @@
 			"revisionTime": "2018-11-10T22:53:28Z"
 		},
 		{
-			"checksumSHA1": "5pEu7asoZ2+UyDNAfwtuar7vhHI=",
+			"checksumSHA1": "DAgL2wVAwIyfR4Zgp0OMEuwz6VU=",
 			"path": "github.com/kataras/pio",
 			"revision": "a9733b5b6b83d32b479aacd51d26ef6018261963",
 			"revisionTime": "2018-05-11T17:40:41Z"
 		},
 		{
-			"checksumSHA1": "9dgCIb83DxMacelORKbaAb60isI=",
+			"checksumSHA1": "NGwhNvcD+E+P1aaWxLwjeGjuMZ4=",
 			"path": "github.com/kataras/pio/terminal",
 			"revision": "a9733b5b6b83d32b479aacd51d26ef6018261963",
 			"revisionTime": "2018-05-11T17:40:41Z"
@@ -391,10 +391,10 @@
 			"revisionTime": "2018-11-10T22:53:28Z"
 		},
 		{
-			"checksumSHA1": "eDQ6f1EsNf+frcRO/9XukSEchm8=",
+			"checksumSHA1": "3JBPxvZn52LORHX9F382xpkt1sA=",
 			"path": "github.com/satori/go.uuid",
-			"revision": "36e9d2ebbde5e3f13ab2e25625fd453271d6522e",
-			"revisionTime": "2018-01-03T17:44:51Z"
+			"revision": "b2ce2384e17bbe0c6d34077efa39dbab3e09123b",
+			"revisionTime": "2018-10-28T12:50:25Z"
 		},
 		{
 			"checksumSHA1": "R2j9LsIPnCBu/y2hPSTZWeViD78=",
