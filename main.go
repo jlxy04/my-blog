@@ -49,28 +49,24 @@ func main() {
 	})
 
 	mvc.Configure(app.Party("/my"), func(app *mvc.Application) {
-		//app.Router.Use(middleware.BasicAuth)
 		myDescService := service.NewMyDescService()
 		app.Register(myDescService)
 		app.Handle(new(controllers.MyDescController))
 	})
 
 	mvc.Configure(app.Party("/p"), func(app *mvc.Application) {
-		//app.Router.Use(middleware.BasicAuth)
 		pictureService := service.NewPictureService()
 		app.Register(pictureService)
 		app.Handle(new(controllers.PictureController))
 	})
 
 	mvc.Configure(app.Party("/c"), func(app *mvc.Application) {
-		//app.Router.Use(middleware.BasicAuth)
 		categoryService := service.NewCategoryService()
 		app.Register(categoryService)
 		app.Handle(new(controllers.CategoryController))
 	})
 
 	mvc.Configure(app.Party("/a"), func(app *mvc.Application) {
-		//app.Router.Use(middleware.BasicAuth)
 		articleService := service.NewArticleService()
 		app.Register(articleService)
 		app.Handle(new(controllers.ArticleController))
@@ -84,14 +80,12 @@ func main() {
 	})
 
 	mvc.Configure(app.Party("/e"), func(app *mvc.Application) {
-		//app.Router.Use(middleware.BasicAuth)
 		extendService := service.NewExtendService()
 		app.Register(extendService)
 		app.Handle(new(controllers.ExtendController))
 	})
 
 	mvc.Configure(app.Party("/co"), func(app *mvc.Application) {
-		//app.Router.Use(middleware.BasicAuth)
 		commonService := service.NewCommonService()
 		app.Register(commonService)
 		app.Register(session.Start, time.Now())
