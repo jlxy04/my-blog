@@ -3,11 +3,11 @@ package datasource
 import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/go-xorm/core"
 	"github.com/go-xorm/xorm"
 	"github.com/my-blog/config"
 	"log"
 	"sync"
+	"xorm.io/core"
 )
 
 //root:123456@/blog?charset=utf8

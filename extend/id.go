@@ -1,7 +1,7 @@
 package extend
 
 import (
-	"github.com/satori/go.uuid"
+	uuid "github.com/iris-contrib/go.uuid"
 	"log"
 	"strings"
 )
