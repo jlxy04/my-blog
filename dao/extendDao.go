@@ -48,3 +48,9 @@ func (dao ExtendDao) GetByArticleId(articleId string) models.BlogExtend {
 	}
 	return models.BlogExtend{}
 }
+
+func (dao ExtendDao) CountAll() models.BlogExtend {
+	extend := models.BlogExtend{}
+	dao.engine.Sums(&extend, "read_count", "like_count")
+	return extend
+}

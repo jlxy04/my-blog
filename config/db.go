@@ -15,10 +15,10 @@ type DbConfig struct {
 
 //主库配置
 var MasterDbConfig = DbConfig{
-	Host:     "",
-	Port:     10,
-	User:     "",
-	Password: "",
+	Host:     "120.76.157.34",
+	Port:     3306,
+	User:     "blog",
+	Password: "blog@123",
 	DbName:   "blog",
 	ShowLog:  true,
 	DebugLog: true,
