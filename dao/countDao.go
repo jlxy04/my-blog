@@ -21,6 +21,16 @@ func (dao CountDao) GetAll() (list []models.BlogCount) {
 	return
 }
 
+func (dao CountDao) Create(count models.BlogCount) {
+	dao.engine.InsertOne(&count)
+}
+
+func (dao CountDao) GetByType(t string) models.BlogCount {
+	count := models.BlogCount{}
+	dao.engine.Where(" `key` = ? ", t).Get(&count)
+	return count
+}
+
 func (dao CountDao) UpdateData(list []models.BlogCount) {
 	session := dao.engine.NewSession()
 	defer session.Clone()
@@ -29,7 +39,7 @@ func (dao CountDao) UpdateData(list []models.BlogCount) {
 
 	var err error
 	for _, m := range list {
-		_, err = session.Update(&m)
+		_, err = session.ID(m.Id).Update(&m)
 		if err != nil {
 			break
 		}
@@ -37,7 +47,7 @@ func (dao CountDao) UpdateData(list []models.BlogCount) {
 
 	if err != nil {
 		session.Rollback()
+	} else {
+		session.Commit()
 	}
-
-	session.Commit()
 }

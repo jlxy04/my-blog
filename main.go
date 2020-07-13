@@ -100,6 +100,8 @@ func main() {
 		app.Handle(new(controllers.CaptchaController))
 	})
 
+	service.StartSchedules()
+
 	app.Run(
 		//开启web服务
 		iris.Addr(":8080"),

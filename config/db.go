@@ -15,7 +15,7 @@ type DbConfig struct {
 
 //主库配置
 var MasterDbConfig = DbConfig{
-	Host:     "120.76.157.34",
+	Host:     "you ip",
 	Port:     3306,
 	User:     "blog",
 	Password: "blog@123",

@@ -4,6 +4,7 @@ import (
 	"github.com/go-xorm/xorm"
 	"github.com/my-blog/models"
 	"log"
+	"strconv"
 )
 
 type ExtendDao struct {
@@ -51,6 +52,23 @@ func (dao ExtendDao) GetByArticleId(articleId string) models.BlogExtend {
 
 func (dao ExtendDao) CountAll() models.BlogExtend {
 	extend := models.BlogExtend{}
-	dao.engine.Sums(&extend, "read_count", "like_count")
+	results, err := dao.engine.SQL("SELECT COALESCE(sum(`read_count`),0) as read_count, COALESCE(sum(`like_count`),0) as like_count FROM `blog_extend`").Query()
+	if err == nil {
+		read, err := strconv.Atoi(string(results[0]["read_count"]))
+		if err == nil {
+			extend.ReadCount = read
+		} else {
+			log.Fatal(err)
+		}
+
+		like, err := strconv.Atoi(string(results[0]["like_count"]))
+		if err == nil {
+			extend.LikeCount = like
+		} else {
+			log.Fatal(err)
+		}
+	} else {
+		log.Fatal(err)
+	}
 	return extend
 }
